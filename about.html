@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تطبيق اختبارات الاختراق - مختبرات لأشهر ثغرات الويب">
+    <meta name="author" content="Cyber 218">
+    <link rel="icon" href="hacker.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        #navbar {
+            background-color: #007bff;
+            padding: 10px 0;
+        }
+
+        #navbar h1 {
+            color: #fff;
+            text-align: center;
+        }
+
+        #backBtn {
+            margin-top: 20px;
+        }
+
+        #appDescription {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-weight: 700;
+        }
+
+        hr {
+            border-top: 1px solid #fff;
+            margin: 20px 0;
+        }
+        #technologies {
+            margin-top: 30px;
+            color: #fff;
+        }
+    </style>
+    <title>حول التطبيق</title>
+</head>
+<body>
+<nav id="navbar">
+    <h1>حول تطبيق</h1>
+</nav>
+<center>
+<div class="container">
+    <p>
+        تطبيق اختبارات الاختراق هو تطبيق مخصص لاختبار الأمان وتدريب المستخدمين على أشهر ثغرات الويب.
+        يقدم المختبرات التدريبية لاختبار ثغرات مثل التحويل، وثغرات الاستدعاء من الملف الشخصي (LFI) وثغرات الاستدعاء من الدليل (LFD)، وهجوم Host Header، وهجوم Cross-Site Request Forgery (CSRF).
+    </p>
+    </center>
+    <hr>
+    <div id="technologies">
+    	<center>
+        <h3> التقنيات المستخدمه في برمجه هذا الموقع </h3>
+        </center>
+        <br>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3 (خطوط Cairo)</li>
+            <li>JavaScript (مع استخدام jQuery)</li>
+            <li>Bootstrap 4</li>
+            <li>SweetAlert2 لصناديق الإشعار</li>
+            <li>Animate.css للتأثيرات البصرية</li>
+        </ul>
+            <div id="backBtn">
+        <a class="btn btn-primary" href="index.html">الرجوع للصفحة الرئيسية</a>
+    </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
+
+<script>
+    setTimeout(function () {
+        Swal.fire({
+            title: 'اشترك في قناة تلجرام للحصول على آخر التحديثات!',
+            showCancelButton: true,
+            confirmButtonText: 'اشتراك',
+            cancelButtonText: 'إغلاق',
+            icon: 'info',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                subscribeTelegram();
+            }
+        });
+    }, 2000);
+
+    function subscribeTelegram() {
+        window.open('https://t.me/Cyber_218', '_blank');
+    }
+
+    function closeNotification() {
+        document.getElementById('subscribeNotification').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

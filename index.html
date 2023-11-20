@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=" web security labs">
+    <meta name="author" content="Cyber 218">
+    <link rel="icon" href="haeder.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #343a40; 
+            color: #ffffff; 
+        }
+
+        h2 {
+            font-weight: 700;
+        }
+
+        .navbar-brand img {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+        .navbar-light {
+            background-color: #ffffff; 
+        }
+
+        .navbar-light .navbar-toggler-icon {
+            background-color: #343a40; 
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #343a40 !important; 
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #007bff !important; 
+        }
+
+     
+        .navbar-toggler {
+            background-color: #343a40; 
+            border-color: #343a40;
+            font-weight: bold;
+        }
+.navbar-brand img {
+        max-height: 40px; 
+        width: auto; 
+    } 
+    </style>
+    <title>web security labs</title>
+</head>
+
+<body>
+
+    <div id="loadingScreen" class="text-center" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">جاري التحميل...</span>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="display: none;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="hacker.png" alt="  web security labs" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">الرئيسية <span class="sr-only">(الصفحة الحالية)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="subscribeTelegram()">اشترك في قناة تلجرام</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html" >حول التطبيق</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" id="welcomeNotification" style="display: none;">
+            اشترك في قناة تلجرام لتلقي آخر التحديثات والمعلومات الأمنية! <a href="https://t.me/Cyber_218" target="_blank" class="alert-link">اشترك الآن.</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="text-center mt-3">
+            <h2>مختبرات لاختبار ثغرات الويب</h2>
+            <img src="home.png" alt="Web Security Labs" class="img-fluid mt-3" style="max-width: 100%;">
+        </div>
+
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-3">
+                <a href="#" class="btn btn-primary btn-block mb-3" onclick="showDownloadAlert('redirect.rar')">Redirect</a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-primary btn-block mb-3" onclick="showDownloadAlert('lfi.rar')">LFI</a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-primary btn-block mb-3" onclick="showDownloadAlert('lfd.rar')">LFD</a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-primary btn-block mb-3" onclick="showDownloadAlert('hostheader.zip')">Host Header</a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-primary btn-block mb-3" onclick="showDownloadAlert('CSRF.rar')">CSRF</a>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('loadingScreen').style.display = 'flex';
+            });
+
+            setTimeout(function () {
+                document.getElementById('loadingScreen').style.display = 'none';
+                var mainContent = document.querySelector('.container-fluid');
+                mainContent.style.display = 'block';
+                mainContent.classList.add('animate__animated', 'animate__fadeIn');
+
+                setTimeout(function () {
+                    document.getElementById('welcomeNotification').style.display = 'block';
+                }, 3000);
+            }, 2000);
+
+            function subscribeTelegram() {
+                window.open('https://t.me/Cyber_218', '_blank');
+            }
+
+            function showDownloadAlert(page) {
+                Swal.fire({
+                    title: 'هل تريد تحميل؟',
+                    text: 'يرجى تثبيته على سيرفر محلي لتجنب المشاكل الأمنية.',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'نعم، قم بالتحميل',
+                    cancelButtonText: 'لا، شكراً'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = page;
+                    }
+                });
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
